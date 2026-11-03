@@ -10,24 +10,18 @@ It filters for IMAX and checks every five minutes.
 - Node.js 22 or newer
 - The ntfy app on your phone
 
-## Setup
+## Setup (one-command Windows launch)
 
-1. Copy `.env.chennai.example` to `.env`:
+1. Install Node.js 22 or newer from https://nodejs.org/.
+2. Install the ntfy app on your phone.
+3. Open PowerShell in the repository folder and run:
    ```powershell
-   Copy-Item .env.chennai.example .env
+   powershell -ExecutionPolicy Bypass -File .\\scripts\\start-chennai-monitor.ps1
    ```
-2. Open `.env` and replace `NTFY_TOPIC` with a long, random, private topic name.
-3. Install ntfy on your phone and subscribe to that exact topic. Keep the topic private.
-4. In this repository folder, run:
-   ```powershell
-   npm install
-   npm run check
-   ```
-5. If the check completes, start continuous monitoring:
-   ```powershell
-   npm start
-   ```
-6. Keep the PC awake and the terminal open. Stop monitoring with Ctrl+C.
+4. The script creates `.env` with a randomly generated private ntfy topic if needed, displays the topic, and pauses so you can subscribe to it in the ntfy app. It then installs dependencies, runs one check, and starts continuous monitoring.
+5. Keep the PC awake and the terminal open. Stop monitoring with Ctrl+C.
+
+The script never overwrites an existing `.env`. The topic is stored locally in `.env`, which is excluded by `.gitignore`. Keep the topic private.
 
 The local status page is http://localhost:4733/ and the health endpoint is
 http://localhost:4733/healthz.
