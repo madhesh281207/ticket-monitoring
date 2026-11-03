@@ -7,7 +7,7 @@ if (-not $nodeCommand) {
     throw "Node.js 22 or newer is required. Install it from https://nodejs.org/ and reopen PowerShell."
 }
 
-$nodeVersionText = (& node --version).Trim().TrimStart("v")
+$nodeVersionText = (& node --version).Trim().TrimStart([char]"v")
 $nodeVersion = [version]$nodeVersionText
 if ($nodeVersion.Major -lt 22) {
     throw "Node.js 22 or newer is required. Detected $nodeVersionText."
@@ -34,7 +34,15 @@ if (-not (Test-Path ".env")) {
     Write-Host "Keep this topic private. It is saved only in your local .env file, which is git-ignored."
 } else {
     Write-Host "Existing .env found; leaving it unchanged."
+    $topicLine = Select-String -Path ".env" -Pattern "^NTFY_TOPIC=(.+)$" | Select-Object -First 1
+    if ($topicLine) {
+        $topic = $topicLine.Matches[0].Groups[1].Value.Trim()
+        Write-Host "Your configured ntfy topic (subscribe to this exact topic in the ntfy phone app):" -ForegroundColor Yellow
+        Write-Host $topic -ForegroundColor Cyan
+    }
 }
+
+Read-Host "Install/open ntfy on your phone and subscribe to the topic above, then press Enter to continue"
 
 Write-Host ""
 Write-Host "Installing project dependencies..."
