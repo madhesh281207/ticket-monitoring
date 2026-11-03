@@ -45,6 +45,10 @@ row is forgotten, so its return alerts you again.
 
 The [ntfy app](https://ntfy.sh/#subscribe-phone) on your phone, and either Docker or Node.js 22+.
 
+## Chennai: Avengers: Doomsday at Nexus Vijaya Mall IMAX
+
+A prepared five-minute BookMyShow monitor configuration for PVR Palazzo, The Nexus Vijaya Mall, Chennai, is available in [`.env.chennai.example`](.env.chennai.example), with Windows setup instructions in [`docs/chennai-setup.md`](docs/chennai-setup.md). The example intentionally leaves the ntfy topic as a placeholder; create a private topic and subscribe to it in the phone app before starting the monitor. District is not enabled until its exact movie content ID is published and verified.
+
 ## Quickest start: run the published image
 
 A prebuilt image is published to GitHub Container Registry on every push to `main`, for both
