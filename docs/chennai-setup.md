@@ -16,7 +16,7 @@ It filters for IMAX and checks every five minutes.
 2. Install the ntfy app on your phone.
 3. Open PowerShell in the repository folder and run:
    ```powershell
-   powershell -ExecutionPolicy Bypass -File .\\scripts\\start-chennai-monitor.ps1
+   powershell -ExecutionPolicy Bypass -File .\scripts\start-chennai-monitor.ps1
    ```
 4. The script creates `.env` with a randomly generated private ntfy topic if needed, displays the topic, and pauses so you can subscribe to it in the ntfy app. It then installs dependencies, runs one check, and starts continuous monitoring.
 5. Keep the PC awake and the terminal open. Stop monitoring with Ctrl+C.
