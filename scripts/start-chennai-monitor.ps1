@@ -25,7 +25,7 @@ if (-not (Test-Path ".env")) {
 
     $envText = [System.IO.File]::ReadAllText((Join-Path $PWD ".env.chennai.example"))
     $envText = $envText.Replace("REPLACE_WITH_A_LONG_RANDOM_NTFY_TOPIC", $topic)
-    $utf8NoBom = New-Object System.Text.UTF8Encoding($false)
+    $utf8NoBom = New-Object System.Text.UTF8Encoding -ArgumentList $false
     [System.IO.File]::WriteAllText((Join-Path $PWD ".env"), $envText, $utf8NoBom)
 
     Write-Host ""
